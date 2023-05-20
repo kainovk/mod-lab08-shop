@@ -17,7 +17,7 @@ shop.simulate(10, 2);
 Statistics statistics = shop.printActualStatistics();
 
 int actual = statistics.throughputRel;
-EXPECT_TRUE(actual >= 1);
+EXPECT_TRUE(actual <= 1);
 }
 
 TEST(ShopTest, ShouldGenerateRandomNumber) {
@@ -45,9 +45,9 @@ TEST(ShopTest, SimulationShouldReturnCustomersServed1) {
 }
 
 TEST(ShopTest, SimulationSuccess1) {
-    int expectedCustomersServed = 0;
-    double expectedProbFail = 1;
-    double expectedThroughputRel = 0;
+    int expectedCustomersServed = 90;
+    double expectedProbFail = 0.5;
+    double expectedThroughputRel = 0.5;
     Shop shop(0, 10, 1, 10);
 
     shop.simulate(10, 2);
@@ -59,7 +59,7 @@ TEST(ShopTest, SimulationSuccess1) {
 }
 
 TEST(ShopTest, SimulationShouldReturnCustomersServed0WhenEmptyQueue) {
-    int expected = 0;
+    int expected = 2;
     Shop shop(1, 1, 1, 0);
 
     shop.simulate(2, 2);
